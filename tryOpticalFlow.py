@@ -40,7 +40,7 @@ def process_video(video_path, output_width=1280, output_height=720):
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
-            break  # Exit when video ends
+            break  
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         flow_rgb = compute_dense_optical_flow(prev_gray, gray, hsv_mask)
@@ -59,7 +59,6 @@ def process_video(video_path, output_width=1280, output_height=720):
         # Show the comparison video in the resized window
         cv2.imshow('Input Video (Left) | Optical Flow Output (Right)', combined_display)
 
-        # Press 'Q' to exit
         key = cv2.waitKey(1)
         if key == ord('q') or key == 27:  # 27 is ESC key
             break
